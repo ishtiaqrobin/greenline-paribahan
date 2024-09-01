@@ -53,7 +53,7 @@
         <section>
             <div>
                 <!-- banner -->
-                <div
+                <div id=""
                     class="max-w-screen-xl mx-auto flex flex-col justify-center items-center bg-[url('/images/banner.png')] h-[650px] bg-cover rounded-[32px] text-white">
                     <p class="text-6xl font-extrabold text-center raleway leading-[86px]">End-to-End Travel with
                         <br> <span class="text-[#1DD100]">Greenline Paribahan</span>
@@ -64,9 +64,11 @@
                         app.
                         The <br> integrated testing
                         features allow for a streamlined.</p>
-                    <button
-                        class="btn bg-[#1DD100] w-[170px] text-[20px] font-bold raleway mt-36 border-none rounded-xl">Buy
-                        Tickets</button>
+                    <a href="#target-section">
+                        <button
+                            class="btn bg-[#1DD100] w-[170px] text-[20px] font-bold raleway mt-36 border-none rounded-xl">Buy
+                            Tickets</button>
+                    </a>
                 </div>
 
                 <!-- ticket sold -->
@@ -256,7 +258,7 @@
             </div>
 
             <!-- Select your seat -->
-            <div class=" bg-white max-w-screen-xl mx-auto rounded-[24px] mb-12">
+            <div id="target-section" class=" bg-white max-w-screen-xl mx-auto rounded-[24px] mb-12">
                 <div class="flex p-8">
 
                     <!-- left side -->
@@ -406,10 +408,12 @@
                             Select Your Seat</p>
                         <div class="py-6">
                             <div class="bg-[#F7F8F8] rounded-xl p-8">
-                                <div class="flex gap-40 pb-6 border-b-[2px] border-[#03071233] border-dashed">
-                                    <p>Seat <span
-                                            class="bg-[#1DD100] text-white rounded-md text-[12px] font-bold px-2">2</span>
-                                    </p>
+                                <div class="flex gap-40 pb-4 border-b-[2px] border-[#03071233] border-dashed">
+                                    <div>
+                                        <p>Seat <span id="selected-seat"
+                                                class="hidden bg-[#1DD100] text-white rounded-md text-[12px] font-bold px-2"></span>
+                                        </p>
+                                    </div>
                                     <div>
                                         <p>Class</p>
                                     </div>
@@ -419,15 +423,10 @@
                                 </div>
 
                                 <div>
-                                    <div id="slected-seat-count"
-                                        class="flex justify-between py-6 border-b-[2px] border-[#03071233]">
-                                        <p>C2</p>
-                                        <p>Economoy</p>
-                                        <p>550</p>
-                                    </div>
+                                    <div id="selected-seat-count" class="border-b-[2px] border-[#03071233] pb-6"></div>
 
                                     <!-- total price -->
-                                    <div class="flex justify-between mt-4">
+                                    <div class="flex justify-between mt-3">
                                         <p>
                                             Total Price
                                         </p>
@@ -471,19 +470,20 @@
                             </div>
 
                             <div class="">
-                                <p class="text-[16px] rounded-[12px] font-semibold text-[#030712] inter">Phone Number*
+                                <p class="text-[16px] rounded-[12px] font-semibold text-[#030712] inter">
+                                    Phone Number*
                                 </p>
-                                <input class="input input-bordered w-full mt-2 mb-4" type="name"
+                                <input id="phone-number" class="input input-bordered w-full mt-2 mb-4" type="number"
                                     placeholder="Enter your phone number" />
                             </div>
 
                             <div class="">
                                 <p class="text-[16px] rounded-[12px] font-semibold text-[#030712] inter">Email ID*</p>
-                                <input class="input input-bordered w-full mt-2 mb-4" type="name"
+                                <input class="input input-bordered w-full mt-2 mb-4" type="email"
                                     placeholder="Enter your email id" />
                             </div>
                             <div>
-                                <button id="next-button" disabled
+                                <button onclick="myModal.showModal()" id="next-button" disabled
                                     class="btn bg-[#1DD100] text-white w-full text-xl font-extrabold raleway rounded-[16px] py-">Next</button>
                             </div>
                         </div>
@@ -528,10 +528,8 @@
     </main>
 
     <!-- modal -->
-    <section class="hidden">
-        <!-- Open the modal using ID.showModal() method -->
-        <button class="btn" onclick="my_modal_2.showModal()">open modal</button>
-        <dialog id="my_modal_2" class="modal">
+    <section id="success-modal" class="">
+        <dialog id="myModal" class="modal">
             <div class="modal-box">
                 <div class="text-center">
                     <div class="flex justify-center">
@@ -543,13 +541,10 @@
                     <p class="text-[#4A4A4A] font-light my-4">Shortly you will find a confirmation in your email.</p>
                 </div>
                 <div class="flex justify-center">
-                    <button onclick=""
+                    <button onclick="Continue()"
                         class="btn bg-[#27AE60] rounded-[32px] text-white font-semibold text-xl px-20">Continue</button>
                 </div>
             </div>
-            <form method="dialog" class="modal-backdrop">
-                <button>close</button>
-            </form>
         </dialog>
     </section>
 

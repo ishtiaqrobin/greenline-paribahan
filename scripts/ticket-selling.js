@@ -26,16 +26,36 @@ buttons.forEach(button => {
         if (!buttonClicked[elementId]) {
             buttonClicked[elementId] = true;
 
-            const element = document.getElementById(elementId)
-            element.classList.add("bg-[#1DD100]", "text-white")
+            addBackgroundColorById(elementId)
 
             const totalSeats = getElementValueById('available-seat')
             const currentSeats = totalSeats - 1
 
             setElementValueById('available-seat', currentSeats)
+            // console.log(`Button ${elementId} clicked`);
 
             // Get the length of the buttonClicked object
             const clickedButtonsCount = Object.keys(buttonClicked).length;
+
+            if (clickedButtonsCount <= 4) {
+                removeClasslistById('selected-seat')
+
+                setElementValueById('selected-seat', clickedButtonsCount)
+
+                const showSeatDiv = document.getElementById('selected-seat-count')
+                const newChild = document.createElement('div')
+                newChild.classList.add('flex', 'justify-between', 'py-2')
+
+                newChild.innerHTML = `
+                    <div class='flex justify-between w-full'>
+                    <p>${elementId}</p>
+                    <p>Economy</p>
+                    <p>550</p>
+                    </div>
+                            `
+                showSeatDiv.appendChild(newChild);
+            }
+
             const totalPrice = clickedButtonsCount * 550
 
             setElementValueById('total-price', totalPrice)
@@ -46,8 +66,7 @@ buttons.forEach(button => {
             }
 
             document.getElementById('apply-button').addEventListener('click', function () {
-                const inputField = document.getElementById('coupon-field');
-                const inputValue = inputField.value;
+                const inputValue = getTextValueElementById('coupon-field')
 
                 if (inputValue == 'Couple20' || inputValue == 'New15') {
                     let discount;
@@ -60,27 +79,44 @@ buttons.forEach(button => {
                     const discountedPrice = totalPrice * (1 - discount);
                     const showDiscountPrice = totalPrice - discountedPrice;
 
-                    const element = document.getElementById('discount-field');
-                    element.classList.remove('hidden');
+                    removeClasslistById('discount-field')
 
                     setElementValueById('discount-price', showDiscountPrice)
 
                     setElementValueById('grand-total', discountedPrice)
 
                     // Hide the invalid coupon message
-                    const invalidCouponElement = document.getElementById('invalid-coupon');
-                    invalidCouponElement.classList.add('hidden');
+                    addClasslistById('invalid-coupon')
 
                 } else {
-                    const element = document.getElementById('invalid-coupon');
-                    element.classList.remove('hidden');
+                    removeClasslistById('invalid-coupon')
                 }
 
             });
 
-            // console.log(`Total buttons clicked: ${clickedButtonsCount}`);
+            document.getElementById('phone-number').addEventListener('input', function () {
+                const inputField = this.value;
+                // const inputFieldValue = parseInt(inputField).toString()
+                const inputFieldValue = inputField.replace()
+
+                if (clickedButtonsCount >= 1 && inputFieldValue.length >= 11) {
+                    const element = document.getElementById('next-button')
+                    element.removeAttribute('disabled')
+                }
+                else {
+                    const element = document.getElementById('next-button')
+                    element.setAttribute('disabled', true)
+                }
+            });
         }
-
-
     });
 });
+
+
+function Continue() {
+    addClasslistById('success-modal');
+
+    setTimeout(() => {
+        location.reload();
+    }, 50);
+}
