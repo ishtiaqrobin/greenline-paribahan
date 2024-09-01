@@ -309,7 +309,7 @@
                                 </div>
 
                                 <div class="grid grid-cols-2 gap-16">
-                                    <div class="grid grid-cols-2 gap-6">
+                                    <div id="button-container1" class="grid grid-cols-2 gap-6">
                                         <button id="A1"
                                             class="text-center px-12 py-4  rounded-xl seat-button-color">A1</button>
                                         <button id="A2"
@@ -352,7 +352,7 @@
                                             class="text-center px-12 py-4  rounded-xl seat-button-color">J2</button>
                                     </div>
 
-                                    <div class="grid grid-cols-2 gap-6">
+                                    <div id="button-container2" class="grid grid-cols-2 gap-6">
                                         <button id="A3"
                                             class="text-center px-12 py-4  rounded-xl seat-button-color">A3</button>
                                         <button id="A4"
@@ -425,26 +425,38 @@
                                         <p>Economoy</p>
                                         <p>550</p>
                                     </div>
+
+                                    <!-- total price -->
                                     <div class="flex justify-between mt-4">
                                         <p>
                                             Total Price
                                         </p>
                                         <p>
-                                            BDT <span class="total-price">1100</span>
+                                            BDT <span id="total-price"></span>
+                                        </p>
+                                    </div>
+                                    <!-- discount price -->
+                                    <div id="discount-field" class="flex gap-1 mt-4 hidden">
+                                        <p>
+                                            Discount Price:
+                                        </p>
+                                        <p>
+                                            BDT <span id="discount-price"></span>
                                         </p>
                                     </div>
 
                                     <div class="py-6 ">
-                                        <p class="text-red-600">Invalid coupon</p>
+                                        <p id="invalid-coupon" class="text-red-600 hidden">Invalid coupon</p>
                                         <label class="input flex items-center justify-between">
-                                            <input type="text" class="" placeholder="Have any coupon?" />
-                                            <button
-                                                class="btn bg-[#1DD100] text-white rounded-lg btn-sm mr-[-8px]">Apply</button>
+                                            <input id="coupon-field" type="text" class=""
+                                                placeholder="Have any coupon?" />
+                                            <button id="apply-button" disabled
+                                                class="btn bg-[#1DD100] hover:bg-[#00c0d1] text-white rounded-lg btn-sm mr-[-8px]">Apply</button>
                                         </label>
                                     </div>
                                     <div class="flex justify-between">
                                         <p>Grand Total</p>
-                                        <p class="grand-total">BDT 1100</p>
+                                        <p>BDT <span id="grand-total"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -471,7 +483,7 @@
                                     placeholder="Enter your email id" />
                             </div>
                             <div>
-                                <button
+                                <button id="next-button" disabled
                                     class="btn bg-[#1DD100] text-white w-full text-xl font-extrabold raleway rounded-[16px] py-">Next</button>
                             </div>
                         </div>
